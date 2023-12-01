@@ -7,11 +7,11 @@ const { href, class: className, ...props } = Astro.props;
 
 const { pathname } = Astro.url;
 const isActive = href === pathname || href === pathname.replace(/\/$/, '');
-const activeClass = isActive ? `font-bold` : '';
+const activeClass = isActive ? `text-primary` : '';
 ---
 
-<li class="m-2 inline-block rounded-md p-1 hover:bg-slate-100">
-	<a href={href} class=`${activeClass}  decoration-0  ` {...props}>
+<li class="hover:bg-background-content m-2 inline-block rounded-md p-1">
+	<a href={href} class=`${activeClass} p-3 decoration-0` {...props}>
 		<slot />
 	</a>
 </li>
