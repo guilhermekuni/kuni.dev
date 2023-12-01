@@ -5,13 +5,13 @@ import { SITE_TITLE } from '../consts';
 ---
 
 <header>
-	<nav>
+	<nav class="flex flex-row">
 		<h2><a href="/">{SITE_TITLE}</a></h2>
-		<div>
+		<ul class="flex flex-row items-center">
 			<HeaderLink href="/">Home</HeaderLink>
 			<HeaderLink href="/blog">Blog</HeaderLink>
 			<HeaderLink href="/about">About</HeaderLink>
-		</div>
+		</ul>
 		<SocialLinks />
 	</nav>
 </header>
