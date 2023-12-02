@@ -1,33 +1,25 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import Layout from '../layouts/Layout.astro';
+import { SITE_DESCRIPTION } from '../consts';
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header title={SITE_TITLE} />
-		<main>
-			<h1 class="text-5xl">Hi, I'm Guilherme 👋</h1>
-			<h2 class="mb-8 text-2xl">
-				Software Engineer at
-				<a class="text-primary underline underline-offset-4" href="https://www.getambush.com/"
-					>Ambush</a
-				>
-			</h2>
-			<p>
-				I have over 7 years of experience creating software, and in the past years I've been
-				focusing a lot on the Frontend side. I'm passionate about teamwork, JavaScript, and the
-				entire React ecosystem.
-			</p>
-			<p>
-				For the past 3 years, I've been work remotely, collaborating with talented people from
-				multiple parts of the globe to solve real world problems.
-			</p>
-		</main>
-	</body>
-</html>
+<Layout siteDescription={SITE_DESCRIPTION}>
+	<main class="- mt-4 p-4">
+		<h1 class="text-5xl">Hi, I'm Guilherme 👋</h1>
+		<h2 class="mb-8 text-2xl">
+			Software Engineer at
+			<a class="text-primary underline underline-offset-4" href="https://www.getambush.com/"
+				>Ambush</a
+			>
+		</h2>
+		<p>
+			I have over 7 years of experience creating software, and in the past years I've been focusing
+			a lot on the Frontend side. I'm passionate about teamwork, JavaScript, and the entire React
+			ecosystem.
+		</p>
+		<p>
+			For the past 3 years, I've been work remotely, collaborating with talented people from
+			multiple parts of the globe to solve real world problems.
+		</p>
+	</main>
+</Layout>

@@ -1,12 +1,10 @@
 ---
 import HeaderLink from './HeaderLink.astro';
 import SocialLinks from './SocialLinks.astro';
-import { SITE_TITLE } from '../consts';
 ---
 
-<header class="bg-background m-0 p-1 shadow-lg">
-	<nav class="text-content-accent flex flex-row items-center justify-between">
-		<h2 class="my-0 ml-4 text-xl text-white"><a href="/">{SITE_TITLE}</a></h2>
+<header class="m-0">
+	<nav class="flex flex-row items-center justify-between text-content-accent">
 		<ul class="flex flex-row items-center">
 			<HeaderLink href="/">Home</HeaderLink>
 			<HeaderLink href="/blog">Blog</HeaderLink>
