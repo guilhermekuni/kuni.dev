@@ -12,6 +12,9 @@ export default {
 				'background-accent': '#6a706e',
 				'background-content': '#2e2f2f',
 			},
+			width: {
+				content: '48rem',
+			},
 		},
 	},
 	plugins: [],
