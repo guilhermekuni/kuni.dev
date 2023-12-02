@@ -7,7 +7,7 @@ const { href, class: className, ...props } = Astro.props;
 
 const { pathname } = Astro.url;
 const isActive = href === pathname || href === pathname.replace(/\/$/, '');
-const activeClass = isActive ? `underline underline-offset-4` : '';
+const activeClass = isActive ? `text-content-accent underline underline-offset-4` : '';
 ---
 
 <li
