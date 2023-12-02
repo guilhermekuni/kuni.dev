@@ -18,7 +18,9 @@ const { siteDescription } = Astro.props;
 	<body class="flex flex-col items-center">
 		<div class="w-full p-2 md:w-9/12 xl:w-1/2">
 			<Header title={SITE_TITLE} />
-			<slot />
+			<main class="mt-4 px-6 py-4">
+				<slot />
+			</main>
 		</div>
 	</body>
 </html>
