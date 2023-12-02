@@ -1,4 +1,6 @@
 ---
+import { ViewTransitions } from 'astro:transitions';
+
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import { SITE_TITLE } from '../consts';
@@ -14,6 +16,7 @@ const { siteDescription } = Astro.props;
 <html lang="en">
 	<head>
 		<BaseHead title={SITE_TITLE} description={siteDescription} />
+		<ViewTransitions />
 	</head>
 	<body class="flex flex-col items-center">
 		<div class="w-full p-2 md:w-9/12 xl:w-1/2">
