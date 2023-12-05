@@ -53,29 +53,26 @@ h6 {
 	line-height: 1.2;
 }
 h1 {
-	font-size: 3.052em;
+	@apply text-5xl;
 }
 h2 {
-	font-size: 2.441em;
+	@apply text-4xl;
 }
 h3 {
-	font-size: 1.953em;
+	@apply text-3xl;
 }
 h4 {
-	font-size: 1.563em;
+	@apply text-2xl;
 }
 h5 {
-	font-size: 1.25em;
+	@apply text-xl;
 }
 strong,
 b {
 	font-weight: 700;
 }
 p {
-	margin-bottom: 1em;
-}
-.prose p {
-	margin-bottom: 2em;
+	@apply mb-6;
 }
 textarea {
 	width: 100%;
@@ -93,22 +90,16 @@ img {
 	border-radius: 8px;
 }
 code {
-	padding: 2px 5px;
-	background-color: rgb(var(--gray-light));
-	border-radius: 2px;
+	@apply mx-2 rounded-md bg-amber-400 px-2 py-1 text-sm text-amber-900;
 }
 pre {
-	padding: 1.5em;
-	border-radius: 8px;
+	@apply my-10 rounded-md p-4 text-lg;
 }
 pre > code {
 	all: unset;
 }
 blockquote {
-	border-left: 4px solid var(--accent);
-	padding: 0 0 0 20px;
-	margin: 0px;
-	font-size: 1.333em;
+	@apply mb-8 border-l-4 border-l-primary px-5;
 }
 hr {
 	border: none;

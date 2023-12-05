@@ -3,6 +3,7 @@ id: 'markdown-style-guide.md'
 title: 'Markdown Style Guide'
 description: 'Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.'
 pubDate: 'Jul 01 2022'
+updatedDate: 'Jul 02 2022'
 heroImage: '/blog-placeholder-1.jpg'
 ---
 
@@ -52,7 +53,7 @@ The blockquote element represents content that is quoted from another source, op
 
 ```markdown
 > Tiam, ad mint andaepu dandae nostion secatur sequo quae.
-> **Note** that you can use _Markdown syntax_ within a blockquote.
+> **Note** that you can use _Markdown syntax_ within a test.
 ```
 
 #### Output
@@ -65,7 +66,7 @@ The blockquote element represents content that is quoted from another source, op
 #### Syntax
 
 ```markdown
-> Don't communicate by sharing memory, share memory by communicating.<br>
+> Don't communicate by sharing memory, share memory test.<br>
 > — <cite>Rob Pike[^1]</cite>
 ```
 
