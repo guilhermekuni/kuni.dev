@@ -1,0 +1,217 @@
+---
+id: 'when-does-react-re-render-our-components.mdx'
+title: 'When does React re-render our components?'
+description: 'Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.'
+pubDate: 'Dec 06 2023'
+updatedDate: 'Dec 06 2023'
+heroImage: '/blog-placeholder-1.jpg'
+---
+
+import { Example1, Example2, Example3, Example4 } from '../../content-components/react-renders';
+
+If you use React to build your projects, you probably use the terms **_"render"_** or **_"re-render"_** when discussing your application. Most likely, you've been talking about performance and how to avoid unnecessary re-renders, or how your application became faster after starting to use `React.memo` to wrap your components.
+
+This type of conversation is very common among software engineers who work with React, but, in fact, most of them (including myself a couple of weeks ago) can't answer the following questions properly:
+
+```markdown
+- What is a render in React?
+- When does React re-render our components?
+- Do prop changes cause re-renders?
+```
+
+In this article, I will answer these questions for you in the simplest way possible, including practical examples, so stick around. 🙂
+
+## What is a render in React?
+
+Okay, let's start with the most basic question: ***What is a render in React?***
+
+I label this as a basic question because it represents a fundamental concept crucial for comprehending the behaviors within our application. Without understanding what a render is, how can we avoid them? Or even, how can we know if we _should_ avoid them in the first place?
+
+Before we comprehend what a render in React is, it's important for us to understand what a component is. In short words, **_components are functions that create a React element_**.
+
+We may discuss this in details in another article, but with that in mind, we can say that **_a render is every time the function that defines our components is invoked_**.
+
+```javascript
+  function MyComponent() {
+    console.log('rendered!')
+
+    returt (
+      ...
+    )
+  }
+```
+
+If we look at the code above, it becomes more obvious. Every time ***'rendered!'*** gets printed, it indicates that our component is being rendered (in other words, our function is being invoked).
+
+## When does React re-render our components?
+
+The answer is actually quite simple: ***our components re-render every time a state changes***.
+
+Look at the example below:
+
+> To enhance readability, I won't include the classes for the code snippets since they don't matter for our examples.
+
+```javascript
+import { useState, useRef } from 'react';
+
+export const Example1 = () => {
+	const [count, setCount] = useState(0);
+
+	const rendersRef = useRef(0);
+
+	rendersRef.current += 1;
+
+	return (
+		<section>
+			<p>Count: {count}</p>
+			<p>Renders: {rendersRef.current}</p>
+			<button onClick={() => setCount(count + 1)}>
+				Increment
+			</button>
+		</section>
+	);
+};
+```
+
+<Example1 client:visible />
+
+We can see that, every time we click on the button, our `count` state changes, which causes the "Renders" to increment too.
+
+One thing to know about this is that every time a component renders, it also renders all its children components.
+
+
+```javascript
+const ChildComponent = () => {
+	const rendersRef = useRef(0);
+
+	rendersRef.current += 1;
+
+	return (
+		<div>
+			<p>Children Renders: {rendersRef.current}</p>
+		</div>
+	);
+};
+
+export const Example2 = () => {
+	const [count, setCount] = useState(0);
+
+	const rendersRef = useRef(0);
+
+	rendersRef.current += 1;
+
+	return (
+		<section>
+			<p>Count: {count}</p>
+			<p>Parent Renders: {rendersRef.current}</p>
+
+			<ChildComponent />
+
+			<button onClick={() => setCount(count + 1)}>
+				Increment
+			</button>
+		</section>
+	);
+};
+```
+
+<Example2 client:visible />
+
+You may notice that the `ChildComponent` doesn't have any state changes, but it's still being re-rendered when we click on the "Increment" button.
+
+That's because the parent component, `Example2`, is being re-rendered since its state is changing.
+
+## Do prop changes cause re-renders?
+
+With that in mind, we can finally answer the last question: ***Do prop changes cause re-renders?***
+
+And the answer is: **no**.
+
+Okay, let me explain.
+
+By default, React will always re-render your components every time a state changes and every time a parent component re-renders.
+
+This means that our prop changes don't really matter. You may notice that, on the previous example, our `ChildrenComponent` didn't receive any props but was still being re-rendered every time the parent re-rendered.
+
+The only time our prop changes matter is when we are wrapping our components inside a `React.memo`. In that case, we'll ditch React's default behavior and specifically tell our App to just re-render our component if one of its props changes.
+
+Here's an example solving the children re-render "problem" using `React.memo`:
+
+```javascript
+const ChildComponentMemoized = memo(ChildComponent);
+
+export const Example3 = () => {
+	const [count, setCount] = useState(0);
+
+	const rendersRef = useRef(0);
+
+	rendersRef.current += 1;
+
+	return (
+		<section>
+		  <p>Count: {count}</p>
+			<p>Parent Renders: {rendersRef.current}</p>
+
+			<ChildComponentMemoized />
+
+			<button onClick={() => setCount(count + 1)}>
+				Increment
+			</button>
+		</section>
+	);
+};
+
+```
+
+<Example3 client:visible />
+
+Nice! Now our component is not having unnecessary re-renders. Tha means we should always use `React.memo` to render our components, right?
+
+Well, actually no. There's a reason for React not using this rule as its default behavior.
+
+To put it simply, `React.memo` is not magic. There's a price to calculate if a prop changed, and sometimes, the performance actually gets worse if we do that instead of letting React just re-render our components. For example, if a component is too simple (like our example), it might not be worth it to use a `React.memo` since the rendering's performance cost is very low.
+
+Another thing we keep in mind is that `React.memo` is not always necessary, even when we are having performance issues. Sometimes the problem lies in the way we structure our code, and refactoring our components composition can solve the problem.
+
+Let's solve the re-render problem again, but this time without using `React.memo`:
+
+```javascript
+const Count = () => {
+	const [count, setCount] = useState(0);
+
+	const rendersRef = useRef(0);
+
+	rendersRef.current += 1;
+
+	return (
+		<>
+			<p>Count: {count}</p>
+			<p>Count Renders: {rendersRef.current}</p>
+			<button onClick={() => setCount(count + 1)}>
+				Increment
+			</button>
+		</>
+	);
+};
+
+export const Example4 = () => {
+	return (
+		<section>
+			<Count />
+			<ChildComponent />
+		</section>
+	);
+};
+```
+
+<Example4 client:visible />
+
+By abstracting the count state logic into a different component, we were able to solve the problem without using `React.memo`. This happens because now, `ChildrenComponent` is not a children from `Count` component, so when we change the count state, just the `Count` component re-renders.
+
+## Conclusion
+
+To summarize everything: React re-renders our components when a state changes, and a component re-rendering will also re-render all its child components. The only time prop changes matter is when we are using `React.memo`, but by default, they don't cause re-renders; parent renders do.
+
+Using `React.memo` can prevent unnecessary re-renders, but it can also mask the real problem: messy code and bad component composition.
+
+I hope this article was useful for you!

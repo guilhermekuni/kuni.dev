@@ -53,10 +53,10 @@ h6 {
 	line-height: 1.2;
 }
 h1 {
-	@apply text-5xl;
+	@apply text-5xl text-amber-200;
 }
 h2 {
-	@apply text-4xl;
+	@apply text-4xl text-amber-300;
 }
 h3 {
 	@apply text-3xl;
@@ -90,7 +90,7 @@ img {
 	border-radius: 8px;
 }
 code {
-	@apply mx-2 rounded-md bg-amber-400 px-2 py-1 text-sm text-amber-900;
+	@apply mx-1 rounded-sm bg-amber-50 px-1 py-1 text-sm  text-amber-950;
 }
 pre {
 	@apply my-10 rounded-md p-4 text-lg;
