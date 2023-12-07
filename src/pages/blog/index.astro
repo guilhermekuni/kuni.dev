@@ -26,7 +26,8 @@ const posts = (await getCollection('blog')).sort(
 								alt=`hero-${post.id}-box`
               />
 							<h4 class="mt-4">{post.data.title}</h4>
-							<p class="mb-8">
+							<p class="mb-8 flex flex-row justify-between">
+                <span class="mr-2 text-content-accent">{post.data.readTime} read</span>
 								<FormattedDate date={post.data.pubDate} />
 							</p>
 						</a>
