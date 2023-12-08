@@ -165,13 +165,13 @@ export const Example3 = () => {
 
 <Example3 client:visible />
 
-Nice! Now our component is not having unnecessary re-renders. Tha means we should always use `React.memo` to render our components, right?
+Nice! Now our component is not having unnecessary re-renders. That means we should always use `React.memo` to render our components, right?
 
 Well, actually no. There's a reason for React not using this rule as its default behavior.
 
 To put it simply, `React.memo` is not magic. There's a price to calculate if a prop changed, and sometimes, the performance actually gets worse if we do that instead of letting React just re-render our components. For example, if a component is too simple (like our example), it might not be worth it to use a `React.memo` since the rendering's performance cost is very low.
 
-Another thing we keep in mind is that `React.memo` is not always necessary, even when we are having performance issues. Sometimes the problem lies in the way we structure our code, and refactoring our components composition can solve the problem.
+Another thing we should keep in mind is that `React.memo` is not always necessary, even when we are having performance issues. Sometimes the problem lies in the way we structure our code, and refactoring our components composition can solve the problem.
 
 Let's solve the re-render problem again, but this time without using `React.memo`:
 
