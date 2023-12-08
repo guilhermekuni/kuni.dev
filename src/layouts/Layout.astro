@@ -7,15 +7,16 @@ import { SITE_TITLE } from '../consts';
 
 interface Props {
 	siteDescription: string;
+	image?: string;
 }
 
-const { siteDescription } = Astro.props;
+const { siteDescription, image } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={SITE_TITLE} description={siteDescription} />
+		<BaseHead title={SITE_TITLE} description={siteDescription} image={image} />
 		<ViewTransitions />
 	</head>
 	<body class="flex h-full flex-col items-center">
