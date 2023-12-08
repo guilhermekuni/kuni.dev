@@ -4,7 +4,9 @@ import SocialLinks from './SocialLinks.astro';
 const today = new Date();
 ---
 
-<footer class="bg-background text-content flex flex-col items-center justify-center p-6">
+<footer
+	class="sticky bottom-0 flex flex-col items-center justify-center bg-background p-6 text-content"
+>
 	&copy; {today.getFullYear()} Guilherme Kuniyoshi. All rights reserved.
 	<SocialLinks />
 </footer>

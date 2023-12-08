@@ -1,0 +1,30 @@
+---
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf(),
+).slice(0, 2);
+
+---
+
+<section class="mt-20">
+  <h3 class="mb-4 text-content-accent">Recent posts:</h3>
+	<ul class="grid grid-cols-1 md:grid-cols-2 gap-6">
+		{
+			posts.map((post) => (
+				<li class="hover:brightness-110">
+					<a href={`/blog/${post.slug}/`}>
+						<img
+							transition:name=`hero-${post.id}-box`
+							width={720}
+							height={360}
+							src={post.data.heroImage}
+							alt=`hero-${post.id}-box`
+            />
+						<h4 class="mt-4">{post.data.title}</h4>
+					</a>
+				</li>
+			))
+		}
+	</ul>
+</section>

@@ -1,10 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import RecentPosts from '../components/RecentPosts.astro';
 import { SITE_DESCRIPTION } from '../consts';
 ---
 
 <Layout siteDescription={SITE_DESCRIPTION}>
-	<h1 class="text-5xl">Hi, I'm Guilherme 👋</h1>
+	<h1 class="text-5xl text-white">Hi, I'm Guilherme 👋</h1>
 	<h2 class="mb-8 text-2xl text-white">
 		Software Engineer at
 		<a class="text-primary underline underline-offset-4" href="https://www.getambush.com/">Ambush</a
@@ -15,14 +16,7 @@ import { SITE_DESCRIPTION } from '../consts';
 		especially all things JavaScript and React.
 	</p>
 	<p>
-		The past 3 years have been a remote adventure, working with awesome folks worldwide to tackle
-		real-world challenges. I love to share my knowledge because I believe that's also the best way
-		to learn, that's why I created this blog.
+		I created this blog to share my knowledge because I believe teaching is the best way to learn.
 	</p>
-	<p>
-		You can also find me on <a
-			class="text-primary underline underline-offset-4"
-			href="https://www.youtube.com/@JapaScript-wl6qr">YouTube</a
-		>.
-	</p>
+	<RecentPosts />
 </Layout>
