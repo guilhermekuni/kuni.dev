@@ -3,6 +3,7 @@ import { ViewTransitions } from 'astro:transitions';
 
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 import { SITE_TITLE } from '../consts';
 
 interface Props {
@@ -20,10 +21,11 @@ const { siteDescription, image } = Astro.props;
 		<ViewTransitions />
 	</head>
 	<body class="flex h-full flex-col items-center">
-		<div class="w-full md:w-content">
+		<div class="min-h-screen w-full md:w-content">
 			<Header title={SITE_TITLE} />
-			<main class="mt-10 px-6 py-4">
+			<main class="mt-10 flex min-h-screen flex-col px-6 py-4">
 				<slot />
+				<Footer />
 			</main>
 		</div>
 	</body>

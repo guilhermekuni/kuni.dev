@@ -12,7 +12,7 @@ const posts = (await getCollection('blog')).sort(
 ---
 
 <Layout siteDescription={SITE_DESCRIPTION}>
-	<section>
+	<section class="flex flex-col flex-grow">
 		<ul class="grid grid-cols-1 md:grid-cols-2 gap-6">
 			{
 				posts.map((post) => (

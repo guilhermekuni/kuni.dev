@@ -1,12 +1,10 @@
 ---
 import SocialLinks from './SocialLinks.astro';
-
-const today = new Date();
 ---
 
 <footer
-	class="sticky bottom-0 flex flex-col items-center justify-center bg-background p-6 text-content"
+	class="mt-4 flex flex-col items-center justify-center border-t-2 border-content-accent bg-background p-4 text-content"
 >
-	&copy; {today.getFullYear()} Guilherme Kuniyoshi. All rights reserved.
+	Follow me on
 	<SocialLinks />
 </footer>

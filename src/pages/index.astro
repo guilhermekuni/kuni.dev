@@ -5,18 +5,18 @@ import { SITE_DESCRIPTION } from '../consts';
 ---
 
 <Layout siteDescription={SITE_DESCRIPTION}>
-	<h1 class="text-5xl text-white">Hi, I'm Guilherme 👋</h1>
-	<h2 class="mb-8 text-2xl text-white">
-		Software Engineer at
-		<a class="text-primary underline underline-offset-4" href="https://www.getambush.com/">Ambush</a
-		>
-	</h2>
-	<p>
-		I'm a Software Engineer with 7+ years of experience, nerding out on Frontend development,
-		especially all things JavaScript and React.
-	</p>
-	<p>
-		I created this blog to share my knowledge because I believe teaching is the best way to learn.
-	</p>
-	<RecentPosts />
+	<section class="flex flex-grow flex-col">
+		<h1 class="text-5xl text-white">Hi, I'm Guilherme 👋</h1>
+		<h2 class="mb-8 text-2xl text-white">
+			Software Engineer at
+			<a class="text-primary underline underline-offset-4" href="https://www.getambush.com/"
+				>Ambush</a
+			>
+		</h2>
+		<p>
+			I'm a Software Engineer with 7+ years of experience, nerding out on Frontend development,
+			especially all things JavaScript and React.
+		</p>
+		<RecentPosts />
+	</section>
 </Layout>
