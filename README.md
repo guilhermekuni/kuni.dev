@@ -5,7 +5,7 @@ My personal blog, where  I post about Frontend Development and Software Engineer
 https://www.guilhermekuni.com/
 
 ## Tech Stack
-- **Frontend Framwork:** [Astro.js](https://astro.build/)
+- **Frontend Framework:** [Astro.js](https://astro.build/)
 - **Styling:** [TailwindCSS](https://tailwindcss.com/)
 - **Hosting:** [Vercel](https://vercel.com/)
 - **Analytics:** [Umami](https://umami.is/)
