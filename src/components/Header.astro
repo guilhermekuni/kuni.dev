@@ -3,10 +3,32 @@ import { Image } from 'astro:assets';
 import logo from '../../public/favicon-32x32.png';
 
 import HeaderLink from './HeaderLink.astro';
+import { Astronav, MenuItems, MenuIcon } from 'astro-navbar';
 ---
 
 <header class="m-0 mt-4 px-6">
-	<nav class="flex flex-row items-center justify-between text-content">
+	<!-- Mobile -->
+	<Astronav>
+		<div class="flex justify-between md:hidden">
+			<li
+				class=`mr-4 inline-block rounded-md transition-colors duration-300 ease-in-out hover:bg-background-content`
+			>
+				<a href="/" class=`decoration-0`>
+					<Image src={logo} alt="blog logo" height="24" width="24" />
+				</a>
+			</li>
+			<MenuIcon class="h-6 w-6 text-lg" />
+		</div>
+		<MenuItems class="hidden lg:flex">
+			<ul class="flex flex-col items-center">
+				<HeaderLink href="/">Home</HeaderLink>
+				<HeaderLink href="/blog">Blog</HeaderLink>
+			</ul>
+		</MenuItems>
+	</Astronav>
+
+	<!-- Desktop -->
+	<div class="justify-between max-sm:hidden">
 		<ul class="flex flex-row items-center">
 			<li
 				class=`mr-4 inline-block rounded-md transition-colors duration-300 ease-in-out hover:bg-background-content`
@@ -15,9 +37,8 @@ import HeaderLink from './HeaderLink.astro';
 					<Image src={logo} alt="blog logo" height="24" width="24" />
 				</a>
 			</li>
-
 			<HeaderLink href="/">Home</HeaderLink>
 			<HeaderLink href="/blog">Blog</HeaderLink>
 		</ul>
-	</nav>
+	</div>
 </header>
